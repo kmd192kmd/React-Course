@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev@3.2.1/external-library.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+    <script type="text/babel">
+      const button = <button>hello</button>;
+      const paragraph = <p>paragraph of text</p>;
+      
+      // const { useState } = React;
+
+      // function App() {
+      //   const [productCost, setProductCost] = useState(0);
+
+      //   function addCottonSocks() {
+      //     console.log("Cotton socks added");
+      //     setProductCost(productCost + 10);
+      //   }
+
+      //   function addTShirt() {
+      //     console.log("T-shirt added");
+      //     setProductCost(productCost + 8);
+      //   }
+
+      //   return (
+      //     <div>
+      //       <p>Cotton socks</p>
+      //       <p>Price: $10</p>
+      //       <button onClick={addCottonSocks}>
+      //         Add to Cart
+      //       </button>
+
+      //       <p>--------------------</p>
+
+      //       <p>T-shirts</p>
+      //       <p>Price: $8</p>
+      //       <button onClick={addTShirt}>
+      //         Add to Cart
+      //       </button>
+
+      //       <p>--------------------</p>
+
+      //       <p>Product cost: ${productCost}</p>
+      //     </div>
+      //   );
+
+      // }
+
+      // const div = (
+      //   <div>
+      //     <button>hello</button>
+      //     <p>paragraph of text {2 + 2}</p>
+      //   </div>
+      // );
+
+      // const div2 = (
+      //   <div>
+      //     <button>Good job!</button>
+      //     <p>My name is Simon</p>
+      //   </div>
+      // );
+
+      let productCost = 0;
+      let consoleCost = 0;
+      let shippingCost = 5;
+
+      setInterval(() => {
+        render();
+      }, 1000);
+
+      function render() {
+        const div = (
+          <div>
+            <p>Cotton socks</p>
+            <p>Price: $10</p>
+            <button onClick={addCottenSocks}>
+              Add to Cart
+            </button>
+
+            <p>--------------------</p>
+
+            <p>T-shirts</p>
+            <p>Price: $8</p>
+            <button onClick={addTShirts}>
+              Add to Cart
+            </button>
+
+            <p>--------------------</p>
+
+            <p>Product cost:  ${productCost}</p>
+            <p>Shipping cost: ${shippingCost}</p>
+            <p>Total cost: {productCost + shippingCost}</p>
+
+            <p>--------------------</p>
+
+            <p>Today is {dayjs().format('MMMM D')}</p>
+            <p>Current time: {dayjs().format('HH:mm:ss')}</p>
+          </div>
+        );
+
+        root.render(div);
+      }
+
+      function addCottenSocks() {
+        productCost += 10;
+        consoleCost += 10;
+        console.log(consoleCost);
+        render();
+      }
+
+      function addTShirts() {
+        productCost += 8;
+        consoleCost += 8;
+        console.log(consoleCost);
+        render();
+      }
+
+      console.log(dayjs().format('MMMM D'));
+
+      // const div3 = (
+      //   <div>
+      //     <p>Cotton socks</p>
+      //     <p>Price: $10</p>
+      //     <button>Add to Cart</button>
+      //     <p>--------------------</p>
+      //     <p>T-shirts</p>
+      //     <p>Price: $8</p>
+      //     <button>Add to Cart</button>
+      //     <p>--------------------</p>
+      //     <p>Product cost:  ${productCost}</p>
+      //   </div>
+      // );
+
+      const container = document.querySelector('.js-container');
+      const root = ReactDOM.createRoot(container);
+
+      render();
+
+    </script>
+  </body>
+</html>
