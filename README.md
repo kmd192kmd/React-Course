@@ -1,1 +1,1 @@
-# React-Course
+# React를 배우는 용도의 레포지토리 입니다.
