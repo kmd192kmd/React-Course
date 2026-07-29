@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>exercise-css&hooks</title>
+    <style>
+      /* .button-design {
+        background-color: rgb(25, 135, 83);
+        color: white;
+        padding: 10px 12px;
+        border: 1px;
+        border-radius: 10px;
+        cursor: pointer;
+
+        width: 60px;
+        text-align: center;
+      }
+
+      .button-design.off {
+        background-color: rgb(220, 53, 69);
+      } */
+
+      /* .button-design {
+        background-color: rgb(0, 123, 255);
+        color: white;
+        border: 1px;
+        border-radius: 10px;
+        padding: 10px 12px;
+        margin-top: 10px;
+
+        cursor: pointer;
+      }
+
+      .button-design.signup {
+        margin-left: 5px;
+      }
+
+      .input-design {
+        padding: 5px 5px;
+        margin-top: 10px;
+        border-radius: 5px;
+      }
+
+      .show {
+        margin-left: 5px;
+      } */
+      body { 
+        font-family: Arial;
+        margin-top: 0px;
+        margin-bottom: 0px;
+      }
+
+      .button-design {
+        background-color: rgb(25, 135, 84);
+        color: white;
+        margin-left: 5px;
+        border: 1px;
+        padding: 12px 15px;
+      }
+
+      .app-container {
+        display: flex;
+        justify-content: center;
+        height: 100vh;
+        align-items: center;
+        background-color: rgb(222, 222, 222);
+
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev@3.2.1/external-library.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+    <script type="text/babel">
+
+      // function App () {
+      //   const [isButtonOn, setIsButtonOn] = React.useState(true);
+
+      //   function clickButton () {
+      //     setIsButtonOn(!isButtonOn);
+      //   }
+
+      //   return (
+      //       <>
+      //         <button
+      //           className={`button-design ${isButtonOn ? '' : 'off'}`}
+      //           onClick={clickButton}
+      //         >{isButtonOn ? 'ON' : 'OFF'}</button>
+      //       </>
+      //   );
+
+      // }
+
+      // function App () {
+      //   const [showPassword, setShowPassword] = React.useState(false);
+
+      //   function clickShowPassword () {
+      //     setShowPassword(!showPassword);
+      //   }
+
+      //   return (
+      //     <>
+      //       <p>Hello, welcom to my website</p>
+      //       <div>
+      //         <input
+      //           placeholder="Email"
+      //           className="input-design email"
+      //         />
+      //       </div>
+      //       <div>
+      //         <input
+      //           type={showPassword ? 'text' : 'password'}
+      //           placeholder="Password"
+      //           className="input-design password"
+      //         />
+      //         <button
+      //           className="show"
+      //           onClick={clickShowPassword}
+      //         >show</button>
+      //       </div>
+      //       <button
+      //         className="button-design login"
+      //       >Login</button>
+      //       <button
+      //         className="button-design signup"
+      //       >Sign up</button>
+      //     </>
+      //   );
+      // }
+
+      // function App () {
+      //   const [time, setTime] = React.useState(dayjs().format('HH:mm:ss'));
+      //   React.useEffect(() => {
+      //     setInterval(() => {
+      //       setTime(dayjs().format('HH:mm:ss'));
+      //       console.log('run code');
+      //     }, 1000);
+      //   });
+
+      //   return (
+      //     <>
+      //       <p>Current time: {time}</p>
+      //     </>
+      //   );
+
+      // }
+
+      function App () {
+        const [clicks, setClicks] = React.useState(0);
+        const buttonRef = React.useRef(null);
+
+        function autoClickButton () {
+          setInterval(() => {
+            const buttonElem = buttonRef.current;
+            if(buttonElem) {
+              buttonElem.click();
+            }
+          }, 1000);
+        }
+
+        function clickButton () {
+          setClicks(clicks + 1);
+        }
+
+        function resetButton () {
+          setClicks(0);
+        }
+
+        return (
+          <div
+            className="app-container"
+          >
+            <button
+              onClick={clickButton}
+              ref={buttonRef}
+              className="button-design"
+            >Clicked {clicks} {clicks === 1 ? 'time' : 'times'}</button>
+            <button
+              onClick={resetButton}
+              className="button-design"
+            >Reset</button>
+            <button
+              onClick={autoClickButton}
+              className="button-design"
+            >Auto Click</button>
+          </div>
+        );
+
+      }
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+
+    </script>
+  </body>
+</html>
