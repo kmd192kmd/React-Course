@@ -1,44 +1,14 @@
-import './header.css';
+import { Header } from '../components/Header.jsx';
 import './HomePage.css';
 
 export function HomePage() {
-    return (
-        <>
-          <title>Ecommerce Project</title>
+  return (
+    <>
+      <title>Ecommerce Project</title>
 
-          <div className="header">
-            <div className="left-section">
-              <a href="/" className="header-link">
-                <img className="logo"
-                  src="images/logo-white.png" />
-                <img className="mobile-logo"
-                  src="images/mobile-logo-white.png" />
-              </a>
-            </div>
+      <Header />
 
-            <div className="middle-section">
-              <input className="search-bar" type="text" placeholder="Search" />
-
-              <button className="search-button">
-                <img className="search-icon" src="images/icons/search-icon.png" />
-              </button>
-            </div>
-
-            <div className="right-section">
-              <a className="orders-link header-link" href="/orders">
-
-                <span className="orders-text">Orders</span>
-              </a>
-
-              <a className="cart-link header-link" href="/checkout">
-                <img className="cart-icon" src="images/icons/cart-icon.png" />
-                <div className="cart-quantity">3</div>
-                <div className="cart-text">Cart</div>
-              </a>
-            </div>
-          </div>
-
-          <div className="home-page">
+      <div className="home-page">
         <div className="products-grid">
           <div className="product-container">
             <div className="product-image-container">
@@ -54,7 +24,7 @@ export function HomePage() {
               <img className="product-rating-stars"
                 src="images/ratings/rating-45.png" />
               <div className="product-rating-count link-primary">
-                87
+                87s
               </div>
             </div>
 
@@ -187,7 +157,7 @@ export function HomePage() {
             </button>
           </div>
         </div>
-          </div>
-        </>
-    );
+      </div>
+    </>
+  );
 }
