@@ -1,11 +1,20 @@
+import { useEffect } from 'react';
 import { Header } from '../components/Header.jsx';
 import './HomePage.css';
+import CheckmarkIcon from '../assets/images/icons/checkmark.png';
 
 export function HomePage() {
+  useEffect(() => {
+    document.title = 'Ecommerce Project';
+    const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+    link.type = 'image/png';
+    link.rel = 'shortcut icon';
+    link.href = '/home-favicon.png';
+    document.head.appendChild(link);
+  }, []);
+
   return (
     <>
-      <title>Ecommerce Project</title>
-
       <Header />
 
       <div className="home-page">
@@ -50,7 +59,7 @@ export function HomePage() {
             <div className="product-spacer"></div>
 
             <div className="added-to-cart">
-              <img src="images/icons/checkmark.png" />
+              <img src={CheckmarkIcon} />
               Added
             </div>
 
@@ -99,7 +108,7 @@ export function HomePage() {
             <div className="product-spacer"></div>
 
             <div className="added-to-cart">
-              <img src="images/icons/checkmark.png" />
+              <img src={CheckmarkIcon} />
               Added
             </div>
 
@@ -148,7 +157,7 @@ export function HomePage() {
             <div className="product-spacer"></div>
 
             <div className="added-to-cart">
-              <img src="images/icons/checkmark.png" />
+              <img src={CheckmarkIcon} />
               Added
             </div>
 
