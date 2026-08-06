@@ -147,3 +147,7 @@
   width: 26px;
   text-align: center;
 }
+
+.orders-link.active .orders-text {
+  text-decoration: underline;
+}
