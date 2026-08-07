@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useEffect } from 'react';
 import { Header } from '../components/Header.jsx';
 import './HomePage.css';
@@ -5,13 +6,6 @@ import CheckmarkIcon from '../assets/images/icons/checkmark.png';
 import { products } from '../../starting-code/ecommerce-project-main/data/products.js';
 
 export function HomePage() {
-  fetch('http://localhost:3000/api/products')
-    .then((response) => {
-      return response.json();
-    }).then((data) => {
-      console.log(data);
-    });
-
   useEffect(() => {
     document.title = 'Ecommerce Project';
     const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
@@ -19,6 +13,15 @@ export function HomePage() {
     link.rel = 'shortcut icon';
     link.href = '/home-favicon.png';
     document.head.appendChild(link);
+
+    axios.get("http://localhost:3000/api/products")
+      .then((res) => {
+        console.log("성공", res.data);
+      })
+      .catch((err) => {
+        console.log("실패", err);
+      });
+
   }, []);
 
   return (
