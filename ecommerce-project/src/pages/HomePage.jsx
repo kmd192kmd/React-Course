@@ -1,11 +1,12 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Header } from '../components/Header.jsx';
 import './HomePage.css';
 import CheckmarkIcon from '../assets/images/icons/checkmark.png';
-import { products } from '../../starting-code/ecommerce-project-main/data/products.js';
 
 export function HomePage() {
+  const [products, setProducts] = useState([]);
+
   useEffect(() => {
     document.title = 'Ecommerce Project';
     const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
@@ -16,6 +17,7 @@ export function HomePage() {
 
     axios.get("http://localhost:3000/api/products")
       .then((res) => {
+        setProducts(res.data);
         console.log("성공", res.data);
       })
       .catch((err) => {
