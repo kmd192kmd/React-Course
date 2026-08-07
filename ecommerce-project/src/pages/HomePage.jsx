@@ -5,6 +5,13 @@ import CheckmarkIcon from '../assets/images/icons/checkmark.png';
 import { products } from '../../starting-code/ecommerce-project-main/data/products.js';
 
 export function HomePage() {
+  fetch('http://localhost:3000/api/products')
+    .then((response) => {
+      return response.json();
+    }).then((data) => {
+      console.log(data);
+    });
+
   useEffect(() => {
     document.title = 'Ecommerce Project';
     const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
