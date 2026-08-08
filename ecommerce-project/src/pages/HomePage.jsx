@@ -4,9 +4,8 @@ import { Header } from '../components/Header.jsx';
 import './HomePage.css';
 import CheckmarkIcon from '../assets/images/icons/checkmark.png';
 
-export function HomePage() {
+export function HomePage({cart}) {
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     document.title = 'Ecommerce Project';
@@ -23,11 +22,6 @@ export function HomePage() {
       })
       .catch((err) => {
         console.log("실패", err);
-      });
-
-    axios.get('/api/cart-items')
-      .then((response) => {
-        setCart(response.data);
       });
 
   }, []);
