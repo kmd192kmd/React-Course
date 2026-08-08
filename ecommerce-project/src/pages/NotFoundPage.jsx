@@ -1,10 +1,10 @@
 import { Header } from "../components/Header";
 
-export function NotFoundPage() {
+export function NotFoundPage({cart}) {
     return(
         <>
-            <Header />
+            <Header cart={cart} />
             <p>Page not found</p>
         </>
     );
-}
+}``
