@@ -16,7 +16,7 @@ export function HomePage() {
     link.href = '/home-favicon.png';
     document.head.appendChild(link);
 
-    axios.get("http://localhost:3000/api/products")
+    axios.get("/api/products")
       .then((response) => {
         setProducts(response.data);
         console.log("성공", response.data);
@@ -25,7 +25,7 @@ export function HomePage() {
         console.log("실패", err);
       });
 
-    axios.get('http://localhost:3000/api/cart-items')
+    axios.get('/api/cart-items')
       .then((response) => {
         setCart(response.data);
       });
