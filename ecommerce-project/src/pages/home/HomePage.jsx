@@ -15,15 +15,13 @@ export function HomePage({cart}) {
     link.href = '/home-favicon.png';
     document.head.appendChild(link);
 
-    axios.get("/api/products")
-      .then((response) => {
-        setProducts(response.data);
-        console.log("성공", response.data);
-      })
-      .catch((err) => {
-        console.log("실패", err);
-      });
-
+    const getHomeData = async () => {
+      const response = await axios.get("/api/products");
+      setProducts(response.data);
+      console.log("성공", response.data);
+    };
+    
+    getHomeData();
   }, []);
 
   return (

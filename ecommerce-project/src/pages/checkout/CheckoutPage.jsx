@@ -16,15 +16,16 @@ export function CheckoutPage({ cart }) {
     link.href = '/cart-favicon.png';
     document.head.appendChild(link);
 
-    axios.get('/api/delivery-options?expand=estimatedDeliveryTime')
-      .then((response) => {
-        setDeliveryOptions(response.data);
-      });
+    const fetchCheckoutData = async () => {
+      let response = await axios.get('/api/delivery-options?expand=estimatedDeliveryTime');
+      setDeliveryOptions(response.data);
 
-    axios.get('/api/payment-summary')
-      .then((response) => {
-        setPaymentSummary(response.data);
-      });
+      response = axios.get('/api/payment-summary');
+      setPaymentSummary(response.data);
+      };
+    
+    fetchCheckoutData();
+
   }, []);
 
   return (
