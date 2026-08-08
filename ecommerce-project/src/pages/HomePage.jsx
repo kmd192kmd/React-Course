@@ -6,6 +6,7 @@ import CheckmarkIcon from '../assets/images/icons/checkmark.png';
 
 export function HomePage() {
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     document.title = 'Ecommerce Project';
@@ -16,19 +17,24 @@ export function HomePage() {
     document.head.appendChild(link);
 
     axios.get("http://localhost:3000/api/products")
-      .then((res) => {
-        setProducts(res.data);
-        console.log("성공", res.data);
+      .then((response) => {
+        setProducts(response.data);
+        console.log("성공", response.data);
       })
       .catch((err) => {
         console.log("실패", err);
+      });
+
+    axios.get('http://localhost:3000/api/cart-items')
+      .then((response) => {
+        setCart(response.data);
       });
 
   }, []);
 
   return (
     <>
-      <Header />
+      <Header cart={cart} />
 
       <div className="home-page">
         <div className="products-grid">
